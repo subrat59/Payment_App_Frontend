@@ -13,7 +13,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router } from "expo-router";
 
 import { BACKEND_URL } from "@/services/api";
-import axios from "axios";
 
 export default function Login() {
 

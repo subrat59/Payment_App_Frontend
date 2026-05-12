@@ -8,6 +8,7 @@ export const BACKEND_URL = axios.create({
     process.env.EXPO_PUBLIC_API_URL,
 });
 
+console.log("He")
 BACKEND_URL.interceptors.request.use(
   async (config) => {
 
@@ -16,6 +17,7 @@ BACKEND_URL.interceptors.request.use(
       await AsyncStorage.getItem("token");
 
     // If token exists
+    console.log(token)
     if (token) {
 
       // Add token in request headers

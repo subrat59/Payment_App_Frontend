@@ -1,5 +1,5 @@
 import { Tabs } from "expo-router";
-import { House, ScanLine, Clock3, User } from "lucide-react-native";
+import { Clock3, House, ScanLine, User, Bell } from "lucide-react-native";
 
 export default function TabsLayout() {
   return (
@@ -22,9 +22,7 @@ export default function TabsLayout() {
         name="home"
         options={{
           title: "Home",
-          tabBarIcon: ({ color, size }) => (
-            <House color={color} size={size} />
-          ),
+          tabBarIcon: ({ color, size }) => <House color={color} size={size} />,
         }}
       />
 
@@ -42,9 +40,7 @@ export default function TabsLayout() {
         name="history"
         options={{
           title: "History",
-          tabBarIcon: ({ color, size }) => (
-            <Clock3 color={color} size={size} />
-          ),
+          tabBarIcon: ({ color, size }) => <Clock3 color={color} size={size} />,
         }}
       />
 
@@ -52,9 +48,15 @@ export default function TabsLayout() {
         name="profile"
         options={{
           title: "Profile",
-          tabBarIcon: ({ color, size }) => (
-            <User color={color} size={size} />
-          ),
+          tabBarIcon: ({ color, size }) => <User color={color} size={size} />,
+        }}
+      />
+
+      <Tabs.Screen
+        name="notifications"
+        options={{
+          title: "Notifications",
+          tabBarIcon: ({ color, size }) => <Bell color={color} size={size} />,
         }}
       />
     </Tabs>

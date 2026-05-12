@@ -4,6 +4,8 @@ import WalletCard from "@/components/WalletCard";
 import { useEffect, useState } from "react";
 import { BACKEND_URL } from "@/services/api";
 import { Href, router } from "expo-router";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 
 export default function Home() {
 
@@ -13,13 +15,12 @@ export default function Home() {
 
   try {
 
+    console.log(process.env.EXPO_PUBLIC_API_URL)
     const response =
       await BACKEND_URL.get(
         "/api/users/me"
       );
-
     setUser(response.data.user);
-    console.log(user)
 
   } catch (error) {
 
