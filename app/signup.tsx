@@ -1,10 +1,4 @@
-import {
-  View,
-  Text,
-  TextInput,
-  Pressable,
-  Alert,
-} from "react-native";
+import { Alert, Pressable, Text, TextInput, View } from "react-native";
 
 import { useState } from "react";
 
@@ -31,38 +25,22 @@ export default function Signup() {
         email,
       });
 
-      const userId=userResponse.data.user.id;
-      console.log(userResponse)
-      console.log("wallet",userId)
-      await BACKEND_URL.post("/api/wallet/create",{
-        userId
-      });
+      if (userResponse.data.token) {
+        // Save JWT token
+        await AsyncStorage.setItem("token", userResponse.data.token);
+        console.log(userResponse.data.token);
 
-      Alert.alert(
-        "Success",
-        "Account Created"
-      );
+        // Navigate to home
+        router.replace("/tabs/home");
+      }
+      console.log(userResponse);
+      Alert.alert("Success", "Account Created");
 
-      await AsyncStorage.setItem(
-        "token",
-        userResponse.data.token
-      );
-
-      router.push({
-          pathname: "/tabs/home",
-
-          params: {
-            userId,
-          },
-        });
-
+      console.log("userResp", userResponse);
     } catch (error) {
       console.log(error);
 
-      Alert.alert(
-        "Error",
-        "Signup failed"
-      );
+      Alert.alert("Error", "Signup failed");
     }
   }
 

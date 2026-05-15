@@ -51,7 +51,12 @@ export default function Login() {
       } else {
 
         // Go to signup
-        router.push("/signup");
+        router.push({
+  pathname: "/signup",
+  params: {
+    phone: phone,
+  },
+});
       }
 
     } catch (error) {
